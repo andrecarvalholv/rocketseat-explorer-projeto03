@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="page">
+        <header>
+            <h1>
+                Crie e compartilhe seu evento.
+            </h1>
+            <p>
+                O primeiro passo, é preencher esse formulário de inscrição.
+            </p>
+        </header>
+        <main>
+            <form id="my-form">
+                <fieldset>
+                    <div class="fieldset-wrapper">
+                        <legend>Informações do Evento</legend>
+                        
+                        <div class="input-wrapper">
+                            <label for="titulo-evento">Título do evento <span>(mínimo 8 caracteres)</span></label>
+                            <input type="text" name="titulo-evento" id="titulo-evento" required maxlength="100">
+                        </div>
+                        
+                        <div class="input-wrapper">
+                            <label for="link-evento">Link do evento <span>(comece com https://)</span></label>
+                            <input type="url" name="link-evento" id="link-evento" required maxlength="100">
+                        </div>
+                        
+                        <div class="input-wrapper">
+                            <label for="wpp-contato">Whatsapp para contato <span>(Somente números, incluir DDD)</span></label>
+                            <input type="text" name="wpp-contato" id="wpp-contato" required minlength="10" maxlength="12">
+                        </div>
+                        
+                        <div class="input-wrapper">
+                            <label for="inform-extra">Informações  extras</label>
+                            <textarea name="inform-extra" id="inform-extra" cols="30" rows="10" maxlength="800"></textarea>                      
+                        </div>
+                        
+                        <div class="input-wrapper">
+                            <label for="categoria">Categoria</label>
+                            <select name="categoria" id="categoria" value="Tipo do evento">
+                                <option value="item1">Podcast</option>
+                                <option value="item2">Ao vivo online</option>
+                                <option value="item3">Presencial</option>
+                            </select>         
+                        </div>
+                    </div>                   
+                </fieldset>
+                
+                <fieldset>
+                    <div class="fieldset-wrapper">
+                        <legend>Privacidade</legend>
+                        
+                        <div class="input-wrapper">
+                            <label for="email">E-mail do administrador <span>(digite um email válido)</span></label>
+                            <input type="email" name="email" id="email" required maxlength="100">
+                        </div>
+                        
+                        <div class="input-wrapper">
+                            <label for="senha">Senha de acesso para os participantes <span>(mínimo 8 caracteres)</span></label>
+                            <input type="password" name="senha" id="senha" required minlength="8" maxlength="8">                            
+                        </div>
+
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" name="evento-privado" id="evento-privado">
+                            <label for="evento-privado">Evento privado</label>                            
+                        </div>                      
+                    </div>
+                </fieldset>
+            
+                <fieldset>    
+                    <div class="fieldset-wrapper">
+                        <legend>Dia e hora</legend> 
+
+                        <div class="col-3">
+                            <div class="input-wrapper">
+                                <label for="data">Data</label>
+                                <input type="date" name="data" id="data">
+                            </div>
+        
+                            <div class="input-wrapper">
+                                <label for="inicio">Das</label>
+                                <input type="time" name="inicio" id="inicio" value="19:00">
+                            </div>
+        
+                            <div class="input-wrapper">
+                                <label for="fim">Até</label>
+                                <input type="time" name="fim" id="fim" value="20:00">
+                            </div>   
+                         </div>
+                    </div>
+                </fieldset>
+                <!-- Poderia colocar o footer com input dentro do formulário, mas preferi relacionar ele com o atributo "form". 
+                Também funcionaria se colocasse um button fora junto com atributo "form".
+                Se colocasse um button dentro do form ele também reconhece que é um submit, nesse caso se você nao quiser que seja
+                tem que especificar que o type é button-->
+            </form>
+            <footer>
+                <input  type="submit" value="Salvar evento" form="my-form"> 
+            </footer>
+        </main>
+    </div>   
+    <script>
+        // Adicionando um evento de input para validar a entrada como números
+        document.getElementById("wpp-contato").addEventListener("input", function() {
+            this.value = this.value.replace(/\D/g, ''); // Remove qualquer caractere não numérico
+        });
+    </script>
+</body>
+</html>
